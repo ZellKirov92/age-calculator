@@ -3,44 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Age calculator app</title>
-
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="/normalize.css">
+  <link rel="stylesheet" href="/style.css">
   <script src="/calculs.js" defer></script>
 </head>
 <body>
   <form id="dateForm">
-    <div id="sectionDay">
-      <label for="day">Day</label>
+    <div>
+      <div class="day">
+        <label for="day">Day</label>
+        <input id="day" name="day" type="number" title="Enter the date of your birthday" placeholder="DD" min="1" max="31" required>
+      </div>
+      <div class="month">
+        <label for="month">Month</label>
+      <input id="month" name="month" type="number" title="Enter the month of your birthday" placeholder="MM" min="1" max="12" required>
+      </div>
+      <div class="year">
+        <label for="year">Year</label>
+      <input id="year" name="year" type="number" title="Enter the year of your birthday" placeholder="YYYY" min="1900" max="2024" required>
+      </div>
+    </div>
+    <hr>
+    <button id="submit" name="submit" value="submit" type="submit">submit</button>
+    <div class="displayResult">
+      <p><span id="resultYears">--</span> years</p>
       <br>
-      <input id="day" name="day" type="number" value="01" title="Enter the date of your birthday" placeholder="DD" min="1" max="31" required>
+      <p><span id="resultMonths">--</span> months</p>
+      <br>
+      <p><span id="resultDays">--</span> days</p>
     </div>
-    
-
-    <div id="sectionMonth">
-      <label for="month">Month</label>
-      <input id="month" name="month" type="number" value="01" title="Enter the month of your birthday" placeholder="MM" min="1" max="12" required>
-    </div>
-    
-
-    <div id="sectionYear">
-      <label for="year">Year</label>
-      <input id="year" name="year" type="number" value="2024" title="Enter the year of your birthday" placeholder="YYYY" min="1900" max="2024" required>
-    </div>
-
-    <span id="resultYears">-- years</span>
-    <br>
-    <span id="resultMonths">-- months</span>
-    <br>
-    <span id="resultDays">-- days</span>
-    <input id="submit" name="submit" value="submit" type="submit">
   </form>  
   <div class="attribution">
    <p> Challenge by <a rel="noopener" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
