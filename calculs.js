@@ -1,100 +1,62 @@
-/*===============================
-*Saisie des elements dans le HTML *
-===================================*/
-let day = document.getElementById("day");
-let sectionMonth = document.getElementById("sectionMonth");
-let month = document.getElementById("month");
-let sectionYear = document.getElementById("sectionYear");
-let year = document.getElementById("year");
-let input = document.querySelectorAll("input[required]");
-let dateForm = document.getElementById("dateForm");
-/*Definition de l'evenement*/
-
-input.forEach((inputs) => {
-    inputs.addEventListener("focus", () => {resetInputs(inputs)}, false);
-    inputs.addEventListener("blur", () => {validateInputs(inputs)}, false);
-});
-
-
-
-/*===============================
-*Parametrage des champs de saisies*
-=================================*/
-
-function validateInputsDays() {
-    let month = parseInt(document.getElementById("month").value);
-    let day = parseInt(document.getElementById("day").value);
-    let dayInMonth = new Date(day, month, 0).getDate();
-    if(isNaN(day) || day < 1 || day > 31 || day > dayInMonth) {
-        alert("Please enter a valid Date");
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-function validateInputsMonths() {
-    let month = parseInt(document.getElementById("month").value);
-    if(isNaN(month) || month < 1 || month > 12) {
-        alert("Please enter a valid Month");
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-function validateInputsYears() {
-    let year = parseInt(document.getElementById("year").value);
-    if(isNaN(year) || year < 1900 || year > 2024) {
-        alert("Please enter a valid Year");
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
-/*===============================*
-*Validation du formulaire de date*
-*=================================*/
-
-
-dateForm.addEventListener("submit", function(ev) {
+/*======================================*
+*Initialisation de l'ecoute d'evenement *
+*=======================================*/
+document.getElementById("dateForm").addEventListener("submit", function (ev) {
     ev.preventDefault();
-    input.forEach((inputs) => {resetInputs(inputs)});
-    let valid = true;
-    input.forEach((inputs) => {
-        if( ! validateInputs(inputs)){
-            valid = false;
-        }
-    });
-if(valid){
-    ev.target.submit();
+/*===============================
+*Saisie des elements dans le HTML*
+*Récuperation des valeurs saisies*
+* par l'utilisateur en même temps *
+===================================*/
+const days = parseInt(document.getElementById("day").value);
+const months = parseInt(document.getElementById("month").value);
+const years = parseInt(document.getElementById("year").value);
+
+/*=================================*
+* Vérifier que les Champs ne soient *
+* pas vides sinon affichage d'erreur*
+====================================*/
+if (years < 1900 || years > 3000 || months < 1 || months > 12 || days < 1 || days > 31 || ! dateValid(years, months, days)) {
+    alert("Please fill in all fields");
+    return;
 }
-}, false);
-    
 
+/*====================================*
+*Creation de la fonction qui verifie 
+*la date du jour actuel               *
+======================================*/
 
-function validateInputs(inputs){
-    if(!validateInputsDays() || !validateInputsMonths() || !validateInputsYears()) {
-        return true;
-    } else {
-        inputs.classList.add('invalid');
-        
-
-
-        return false;
-
-    } 
-};
-
-function resetInputs(inputs){
-    let inputLabel = inputs.previousElementSibling;
-    inputs.classList.remove('invalid'); 
-    while(inputLabel.firstElementChild){
-        inputLabel.removeChild(inputLabel.firstElementChild);
-    }
-    input.valid = true;
+function dateValid(years, months, days) {
+    const dateTesting = new Date(years, months - 1, days);
+    return dateTesting.getFullYear() === years && dateTesting.getMonth() === months - 1 && dateTesting.getDate() === days;
 }
+
+/*=======================================*
+*Calcul de l'age entré par l'utilisateur*
+=========================================*/
+
+const today = new Date();
+const userBirthday = new Date(years, months - 1, days);
+const subtraction = today - userBirthday;
+const ageUser = new Date (subtraction);
+
+
+/*======================================*
+*Stocker les valeurs obtenues dans les
+*variables qui vont afficher les resultats
+* à l'écran
+=========================================*/
+
+const resultYears = ageUser.getFullYear() - 1970;
+const resultMonths = ageUser.getMonth();
+const resultDays = ageUser.getDate();
+
+/*=========================================*
+*Envoie des données à l'écran de l'utilisateur*
+================================================*/
+
+document.getElementById("resultYears").textContent = resultYears;
+document.getElementById("resultMonths").textContent = resultMonths;
+document.getElementById("resultDays").textContent = resultDays;
+
+});
