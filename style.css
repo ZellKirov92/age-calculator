@@ -98,10 +98,16 @@ span {
     border: 1px solid hsl(0, 100%, 67%);
 }
 
+img {
+    border: 0;
+    width: 88px;
+    height: 31px;
+}
+
 @media screen and (min-width: 376px) and (max-width: 956px) {
     button {
         left: 45%;
-    }    
+    } 
 }
 
 @media screen and (min-width: 956px) {

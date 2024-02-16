@@ -16,10 +16,26 @@ const years = parseInt(document.getElementById("year").value);
 * Vérifier que les Champs ne soient *
 * pas vides sinon affichage d'erreur*
 ====================================*/
+
 if (years < 1900 || years > 3000 || months < 1 || months > 12 || days < 1 || days > 31 || ! dateValid(years, months, days)) {
-    alert("Please fill in all fields");
-    return;
-}
+    let day = document.getElementById("day");
+    day.classList.add("invalid");
+    let month = document.getElementById("month");
+    month.classList.add("invalid");
+    let year = document.getElementById("year");
+    year.classList.add("invalid");
+    return false;
+    }
+    else {
+        let day = document.getElementById("day");
+        day.classList.remove("invalid");
+        let month = document.getElementById("month");
+        month.classList.remove("invalid");
+        let year = document.getElementById("year");
+        year.classList.remove("invalid");
+    }
+    
+
 
 /*====================================*
 *Creation de la fonction qui verifie 
