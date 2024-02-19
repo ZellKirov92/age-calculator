@@ -65,7 +65,7 @@ button {
     bottom: 48px;
     left: 130px;
     right: 50%;
-    background: no-repeat center hsl(259, 100%, 65%) url("/assets/images/icon-arrow.svg");
+    background: no-repeat center hsl(259, 100%, 65%) url("../assets/images/icon-arrow.svg");
     width: 70px;
     height: 70px;
     color: hsl(259, 100%, 65%);
