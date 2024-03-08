@@ -12,7 +12,7 @@ body {
     align-items: center;
     background-color: hsl(0, 0%, 86%);
     font-size: 18px;
-    font-family: Poppins, Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Poppins', Georgia, 'Times New Roman', Times, serif;
     margin: auto;
 }
 
@@ -65,12 +65,16 @@ button {
     bottom: 48px;
     left: 130px;
     right: 50%;
-    background: no-repeat center hsl(259, 100%, 65%) url(../assets/images/icon-arrow.svg);
+    background: no-repeat center hsl(259, 100%, 65%) url("../assets/images/icon-arrow.svg");
     width: 70px;
     height: 70px;
     color: hsl(259, 100%, 65%);
     font-size: 0;
     border-radius: 50%;
+}
+
+button:hover {
+    background: no-repeat center hsl(0, 0%, 8%) url("../assets/images/icon-arrow.svg");
 }
 
 .displayResult {
